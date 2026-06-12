@@ -34,8 +34,11 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: sed -i "/^version/c\version = \"$VERSION\"" Cargo.toml
       
+      - name: Install Cargo Binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+      
       - name: Install Trunk
-        run: cargo install trunk
+        run: cargo binstall trunk
 
       - name: Build Site
         run: trunk build --release
