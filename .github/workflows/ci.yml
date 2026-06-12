@@ -24,6 +24,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
+
+      - name: Install Cargo Binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+      - name: Install Trunk
+        run: cargo binstall trunk
+
       - uses: automas-dev/reusable-workflows/increment_version@v1.1
         id: version
         with:
@@ -33,12 +42,6 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: sed -i "/^version/c\version = \"$VERSION\"" Cargo.toml
-      
-      - name: Install Cargo Binstall
-        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-      
-      - name: Install Trunk
-        run: cargo binstall trunk
 
       - name: Build Site
         run: trunk build --release
