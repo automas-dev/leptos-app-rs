@@ -1,0 +1,12 @@
+[package]
+name = "leptos-app-rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+leptos = { version = "0.8.19", features = ["csr"] }
+leptos_meta = { version = "0.8" }
+leptos_router = { version = "0.8" }
+console_log = "1"
+log = "0.4"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#F6E21B" />
+  <meta name="description" content="A Leptos App" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Add a plain CSS file: see https://trunk-rs.github.io/trunk/guide/assets/#css -->
+  <!-- If using Tailwind with Leptos CSR, see https://trunk-rs.github.io/trunk/guide/assets/#tailwind instead-->
+  <link data-trunk rel="scss" href="public/styles.scss" />
+
+  <!-- Include favicon in dist output: see https://trunk-rs.github.io/trunk/guide/assets/#icon -->
+  <link data-trunk rel="icon" href="public/favicon.ico" />
+  <link data-trunk rel="icon" href="public/favicon-32x32.png">
+  <link data-trunk rel="icon" href="public/favicon-16x16.png">
+  <link data-trunk rel="copy-file" href="public/favicon-32x32.png">
+  <link data-trunk rel="copy-file" href="public/favicon-16x16.png">
+  <link data-trunk rel="copy-file" href="public/manifest.json">
+
+  <!-- include support for `wasm-bindgen --weak-refs` - see: https://rustwasm.github.io/docs/wasm-bindgen/reference/weak-references.html -->
+  <link data-trunk rel="rust" data-wasm-opt="z" data-weak-refs />
+</head>
+
+<body></body>
+
+</html>
