@@ -9,6 +9,10 @@ on:
       - reopened
       - synchronize
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     name: Build Site
