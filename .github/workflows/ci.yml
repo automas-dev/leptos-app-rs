@@ -47,9 +47,18 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: sed -i "/^version/c\version = \"$VERSION\"" Cargo.toml
+      
+      - name: Get Pages URL
+        id: url
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo URL=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url') >> $GITHUB_OUTPUT
 
       - name: Build Site
-        run: trunk build --release
+        env:
+          url: ${{ steps.url.outputs.url }}
+        run: trunk build --release --public-url $URL
 
       - name: Upload dist files
         id: deployment
