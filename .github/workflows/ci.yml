@@ -35,7 +35,7 @@ jobs:
         run: sed -i "/^version/c\version = \"$VERSION\"" Cargo.toml
       
       - name: Install Trunk
-        run: cargo binstall trunk
+        run: cargo install trunk
 
       - name: Build Site
         run: trunk build --release
