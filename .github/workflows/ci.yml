@@ -20,7 +20,6 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +38,7 @@ jobs:
         run: cargo binstall trunk
 
       - name: Build Site
-        run: trunk build --release --public-url $URL
+        run: trunk build --release
 
       - name: Upload dist files
         id: deployment
@@ -55,5 +54,4 @@ jobs:
 
       - name: Deploy Site to GitHub Pages
         # if: github.ref == 'refs/heads/main'
-        id: deployment
         uses: actions/deploy-pages@v4
