@@ -53,11 +53,11 @@ jobs:
         with:
           path: dist/
 
-      - name: Create Tag
-        uses: automas-dev/reusable-workflows/increment_version@v1.0
-        if: github.ref == 'refs/heads/main'
-        with:
-          tag: ${{ steps.version.outputs.version }}
+      # - name: Create Tag
+      #   uses: automas-dev/reusable-workflows/increment_version@v1.0
+      #   if: github.ref == 'refs/heads/main'
+      #   with:
+      #     tag: ${{ steps.version.outputs.version }}
 
       - name: Deploy Site to GitHub Pages
         # if: github.ref == 'refs/heads/main'
